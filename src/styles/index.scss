@@ -1,0 +1,68 @@
+@import "layout";
+
+
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: Microsoft YaHei, Arial, Helvetica Neue, sans-serif, Helvetica, PingFang SC, Hiragino Sans GB;
+}
+
+input, textarea, select, button {
+  font-family: Microsoft YaHei, Arial, Helvetica Neue, sans-serif, Helvetica, PingFang SC, Hiragino Sans GB;
+}
+
+ul, li {
+  padding: 0;
+  margin: 0;
+  list-style: none
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+div:focus {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+#app {
+  height: 100%;
+  width: 100%;
+}
