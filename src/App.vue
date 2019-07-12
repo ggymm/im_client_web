@@ -12,7 +12,7 @@
 
 <script>
 import { AppMain, Navbar, Sidebar } from './views/layout'
-import ChatController from './socket/chatController'
+import ChatController from './socket/chat'
 export default {
   name: 'App',
   components: {

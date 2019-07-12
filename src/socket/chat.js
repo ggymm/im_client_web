@@ -1,5 +1,5 @@
-import protoRoot from './proto/proto.js'
-import { encodeMessageData, decodeMessageData } from './utils'
+import protoRoot from './message.js'
+import { encodeMessageData, decodeMessageData } from './codec.js'
 
 const messageProtocol = protoRoot.lookup('message.Message')
 
@@ -32,7 +32,10 @@ const ChatController = {
     this.websocket = new WebSocket('ws://localhost:18808/chat')
     this.websocket.binaryType = 'arraybuffer'
     this.websocket.onmessage = function(event) {
-      console.log(messageProtocol.decode(decodeMessageData(event)))
+      const messageBuffer = decodeMessageData(event)
+      if (messageBuffer !== null) {
+        console.log(messageProtocol.decode(messageBuffer))
+      }
     }
     this.websocket.onclose = function(event) {
     }

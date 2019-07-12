@@ -10,8 +10,8 @@
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
-    "proto-json": "pbjs -t json src/socket/proto/source/*.proto > src/socket/proto/proto.json",
-    "proto": "pbjs -t json-module -w commonjs -o src/socket/proto/proto.js src/socket/proto/source/*.proto"
+    "proto-json": "pbjs -t json src/socket/source/*.proto > src/socket/proto/proto.json",
+    "proto": "pbjs -t json-module -w commonjs -o src/socket/message.js src/socket/source/*.proto"
   },
   "main": "background.js",
   "dependencies": {

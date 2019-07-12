@@ -11,10 +11,10 @@ export function encodeMessageData(request) {
 }
 
 export function decodeMessageData(event) {
-  debugger
   if (event.data instanceof ArrayBuffer) {
     const msgContent = new DataView(event.data)
     const msgId = msgContent.getUint16(0, true)
+    // 校验消息ID
     if (msgId === messageId) {
       return new Uint8Array(event.data.slice(2))
     } else {
