@@ -1,7 +1,5 @@
 import protoRoot from './message.js'
-import { encodeMessageData, decodeMessageData } from './codec.js'
-
-const messageProtocol = protoRoot.lookup('message.Message')
+import { decodeMessageData, encodeMessageData } from './codec.js'
 
 const CommandType = protoRoot.lookup('message.CommandType')
 const MsgType = protoRoot.lookup('message.MsgType')
@@ -22,9 +20,9 @@ const ChatController = {
       Content: '',
       Extras: ''
     }
-    const request = messageProtocol.encode(messageProtocol.create(messageObject)).finish()
     if (this.websocket.readyState === WebSocket.OPEN) {
-      this.websocket.send(encodeMessageData(request))
+      // 希望获取到聊天列表
+      this.websocket.send(encodeMessageData(messageObject))
     }
   },
   init: async function() {
@@ -32,9 +30,9 @@ const ChatController = {
     this.websocket = new WebSocket('ws://localhost:18808/chat')
     this.websocket.binaryType = 'arraybuffer'
     this.websocket.onmessage = function(event) {
-      const messageBuffer = decodeMessageData(event)
-      if (messageBuffer !== null) {
-        console.log(messageProtocol.decode(messageBuffer))
+      const message = decodeMessageData(event)
+      if (message !== null) {
+        console.log(message)
       }
     }
     this.websocket.onclose = function(event) {
